@@ -1,4 +1,5 @@
 ﻿using System;
+using HTCCovidBE.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
