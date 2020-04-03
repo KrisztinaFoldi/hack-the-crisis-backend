@@ -1,9 +1,9 @@
 ﻿using System;
 namespace HTCCovidBE.Models
 {
-    public class Task
+    public class Assignment
     {
-        public long TaskId { get; set; }
+        public long AssignmentId { get; set; }
         public long CategoryId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
