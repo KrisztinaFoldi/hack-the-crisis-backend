@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using HTCCovidBE.DTOs;
 using HTCCovidBE.Services;
@@ -27,7 +28,6 @@ namespace HTCCovidBE.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody]RegisterDTO registerDTO)
         {
- 
             if (!ModelState.IsValid) 
             {
                 return BadRequest();
@@ -42,5 +42,7 @@ namespace HTCCovidBE.Controllers
 
             return BadRequest(result);
         }
+
+
     }
 }
