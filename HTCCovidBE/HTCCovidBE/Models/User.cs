@@ -6,7 +6,7 @@ namespace HTCCovidBE.Models
 {
     public class User : IdentityUser
     {
-        public List<Dog> Dogs { get; set; }
-        public List<Reservation> Reservations { get; set; }
+       public List<Dog> Dogs { get; set; }
+       public List<Reservation> Reservations { get; set; }
     }
 }

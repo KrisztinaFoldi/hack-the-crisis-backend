@@ -15,6 +15,6 @@ namespace HTCCovidBE.Models
         public bool Neutered { get; set; }
         public int Age { get; set; }
         public string Info { get; set; }
-        public string Id { get; set; }
+        public string UserId { get; set; }
     }
 }

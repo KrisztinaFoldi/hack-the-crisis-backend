@@ -10,7 +10,7 @@ namespace HTCCovidBE.Models
         public long ReservationId { get; set; }
         public DateTime reservationStart { get; set; }
         public DateTime reservationEnd { get; set; }
-        public string Id { get; set; }
+        public string UserId { get; set; }
         public long KennelId { get; set; }
     }
 }

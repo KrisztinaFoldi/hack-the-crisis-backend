@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HTCCovidBE
 {
-    public class ApplicationContext : IdentityDbContext
+    public class ApplicationContext : IdentityDbContext<User>
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Dog> Dogs { get; set; }

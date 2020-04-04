@@ -7,7 +7,8 @@ namespace HTCCovidBE.Models
 {
     public class Information
     {
-        public string Id { get; set; }
+        public long InformationId { get; set; }
+        public string UserId { get; set; }
         public long KennelId { get; set; }
         public string Info { get; set; }
     }

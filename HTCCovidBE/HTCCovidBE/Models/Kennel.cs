@@ -8,7 +8,7 @@ namespace HTCCovidBE.Models
     public class Kennel
     {
         public long KennelId { get; set; }
-        public Address Address { get; set; }
+        public long AddressId { get; set; }
         public string Description { get; set; }
         public DateTime Open { get; set; }
         public DateTime Close { get; set; }
