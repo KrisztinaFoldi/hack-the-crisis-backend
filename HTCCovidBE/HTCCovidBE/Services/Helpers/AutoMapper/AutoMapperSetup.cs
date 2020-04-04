@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AutoMapper;
+using HTCCovidBE.Services.Helpers.AutoMapper.Profiles;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,7 @@ namespace HTCCovidBE.Services.Helpers.AutoMapper
         {
             var config = new MapperConfiguration(cfg =>
             {
+                cfg.AddProfile(new AssignmentFromNewAssignmentDTO());
             });
 
             var mapper = config.CreateMapper();
