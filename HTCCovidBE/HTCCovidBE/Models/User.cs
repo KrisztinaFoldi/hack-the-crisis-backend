@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 
 namespace HTCCovidBE.Models
 {
     public class User : IdentityUser
     {
-        string Address { get; set; }
+        public string Address { get; set; }
+        public List<Assignment> Assignments { get; set; }
+        public List<Donation> Donations { get; set; }
     }
 }
