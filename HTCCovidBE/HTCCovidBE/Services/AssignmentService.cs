@@ -18,13 +18,14 @@ namespace HTCCovidBE.Services
         {
             var AssignmentToAdd = new Assignment
             {
-                CategoryId = newAssignmentDTO.CategoryId,
+                Category = newAssignmentDTO.Category,
                 Title = newAssignmentDTO.Title,
                 Description = newAssignmentDTO.Description,
                 Place = newAssignmentDTO.Place,
                 Date = newAssignmentDTO.Date,
                 PaymentDetails = newAssignmentDTO.PaymentDetails,
                 Price = newAssignmentDTO.Price
+
 
             };
 
