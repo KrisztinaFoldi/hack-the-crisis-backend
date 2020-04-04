@@ -14,7 +14,7 @@ namespace HTCCovidBE.Services.Helpers.AutoMapper
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new AssignmentFromNewAssignmentDTO());
+                cfg.AddProfile();
             });
 
             var mapper = config.CreateMapper();
