@@ -9,9 +9,6 @@ namespace HTCCovidBE
     public class ApplicationContext : IdentityDbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<Assignment> Assignments { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Donation> Donations { get; set; }
 
         public ApplicationContext(DbContextOptions options) : base(options)
         {
@@ -24,6 +21,5 @@ namespace HTCCovidBE
                 new IdentityRole { Name = "Admin", NormalizedName = "Admin".ToUpper() }
             );
         }
-
     }
 }

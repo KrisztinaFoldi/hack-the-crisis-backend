@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 using HTCCovidBE.Models;
+=======
+using HTCCovidBE.Models;
+>>>>>>> 15e78d0f2bd3c9bf42401f875184ad25280d8be1
 using HTCCovidBE.Services;
 using HTCCovidBE.Services.Helpers.AutoMapper;
 using Microsoft.AspNetCore.Builder;
