@@ -31,7 +31,6 @@ namespace HTCCovidBE
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddTransient<IAssignmentService, AssignmentService>();
             services.AddIdentity<User, IdentityRole>()
                .AddEntityFrameworkStores<ApplicationContext>();
             services.AddDbContext<ApplicationContext>(builder =>
