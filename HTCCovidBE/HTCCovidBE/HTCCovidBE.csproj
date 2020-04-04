@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="DTOs\" />
-    <Folder Include="Services\Helpers\AutoMapper\Profiles\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>
