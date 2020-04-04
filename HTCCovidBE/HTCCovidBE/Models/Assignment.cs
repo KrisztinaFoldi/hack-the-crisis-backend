@@ -1,8 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace HTCCovidBE.Models
 {
     public class Assignment
     {
+        
         public long AssignmentId { get; set; }
         public string Category { get; set; }
         public string Title { get; set; }
@@ -10,7 +13,7 @@ namespace HTCCovidBE.Models
         public string Place { get; set; }
         public DateTime Date { get; set; }
         public string UserId { get; set; }
-        public User AssigneedUser { get; set; }
+        public User AssigneeUser { get; set; }
         public string PaymentDetails { get; set; }
         public int Price { get; set; }
     }

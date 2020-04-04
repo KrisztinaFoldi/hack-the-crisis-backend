@@ -22,15 +22,11 @@ namespace HTCCovidBE.Migrations
                     b.Property<long>("AssignmentId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AssigneeId");
-
-                    b.Property<long>("CategoryId");
+                    b.Property<string>("Category");
 
                     b.Property<DateTime>("Date");
 
                     b.Property<string>("Description");
-
-                    b.Property<string>("OwnerId");
 
                     b.Property<string>("PaymentDetails");
 
@@ -40,7 +36,11 @@ namespace HTCCovidBE.Migrations
 
                     b.Property<string>("Title");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("AssignmentId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Assignments");
                 });
@@ -62,11 +62,15 @@ namespace HTCCovidBE.Migrations
                     b.Property<long>("DonationId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CategoryId");
+                    b.Property<string>("Category");
 
                     b.Property<string>("DonationTitle");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("DonationId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Donations");
                 });
@@ -237,7 +241,23 @@ namespace HTCCovidBE.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<string>("Address");
+
                     b.HasDiscriminator().HasValue("User");
+                });
+
+            modelBuilder.Entity("HTCCovidBE.Models.Assignment", b =>
+                {
+                    b.HasOne("HTCCovidBE.Models.User", "AssigneeUser")
+                        .WithMany("Assignments")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("HTCCovidBE.Models.Donation", b =>
+                {
+                    b.HasOne("HTCCovidBE.Models.User")
+                        .WithMany("Donations")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
