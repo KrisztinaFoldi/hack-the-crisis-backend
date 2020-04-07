@@ -13,7 +13,6 @@ namespace HTCCovidBE
         public DbSet<Information> Informations { get; set; }
         public DbSet<Kennel> Kennels { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
-        public DbSet<Address> Addresses { get; set; }
 
         public ApplicationContext(DbContextOptions options) : base(options)
         {

@@ -15,6 +15,7 @@ namespace HTCCovidBE.Services.Helpers.AutoMapper
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new DogFromDogDTO());
+                cfg.AddProfile(new KennelFromKennelDTO());
             });
 
             var mapper = config.CreateMapper();

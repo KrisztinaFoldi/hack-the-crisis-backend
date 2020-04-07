@@ -38,6 +38,7 @@ namespace HTCCovidBE
                    builder.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.BuildServiceProvider().GetService<ApplicationContext>().Database.Migrate();
             services.AddTransient<IDogService, DogService>();
+            services.AddTransient<IKennelService, KennelService>();
             services.SetUpAutoMapper();
 
         }
