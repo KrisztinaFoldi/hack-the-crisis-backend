@@ -22,18 +22,43 @@ namespace HTCCovidBE.Controllers
             this.kennelService = kennelService;
         }
 
-        // POST api/<controller>
+        // POST api/kennel
         [HttpPost]
         public async Task<ActionResult> AddKennel([FromBody] KennelDTO KennelDTO)
         {
             if (ModelState.IsValid)
             {
-                await kennelService.AddKennelAsync(KennelDTO);
+                await kennelService.AddKennelAsync( KennelDTO);
                 return Ok();
             }
 
             return BadRequest();
         }
 
+        // GET api/kennel/5
+        [HttpGet("{KennelId}")]
+        public async Task<ActionResult> EditKennel([FromRoute] long KennelId)
+        {
+            var Kennel = await kennelService.FindKennelByIdAsync(KennelId);
+            if (Kennel == null)
+            {
+                return BadRequest("Nem található a keresett kutyafuttató");
+            }
+
+            return Ok(Kennel);
+        }
+
+        // POST api/kennel/5
+        [HttpPost("{KennelId}")]
+        public async Task<ActionResult> EditKennel([FromRoute] long KennelId, [FromBody] KennelDTO KennelDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                await kennelService.EditKennelAsync(KennelDTO, KennelId);
+                return Ok();
+            }
+
+            return BadRequest();
+        }
     }
 }
