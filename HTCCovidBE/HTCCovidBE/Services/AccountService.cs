@@ -12,11 +12,24 @@ namespace HTCCovidBE.Services
     {
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
+        private readonly ApplicationContext applicationContext;
 
-        public AccountService(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountService(UserManager<User> userManager, SignInManager<User> signInManager, ApplicationContext applicationContext)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.applicationContext = applicationContext;
+        }
+
+        public async Task DeleteUserAsync(User User)
+        {
+            applicationContext.Users.Remove(User);
+            await applicationContext.SaveChangesAsync();
+        }
+
+        public Task<User> FindUserAsync(string UserId)
+        {
+            return applicationContext.Users.FindAsync(UserId);
         }
 
         public async Task<IdentityResult> RegisterAsync(RegisterDTO model)

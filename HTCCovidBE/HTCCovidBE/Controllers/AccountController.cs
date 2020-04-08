@@ -12,8 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HTCCovidBE.Controllers
 {
-    [Authorize]
-    [Route("api/account")]
+    //[Authorize]
+    [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
     {
@@ -28,7 +28,7 @@ namespace HTCCovidBE.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody]RegisterDTO registerDTO)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
@@ -43,6 +43,19 @@ namespace HTCCovidBE.Controllers
             return BadRequest(result);
         }
 
+        // DELETE api/account/delete
+        //[Authorize(Roles = "Admin")]
+        [HttpDelete()]
+        public async Task<ActionResult> DeleteUser([FromBody] DeleteUserDTO userDTO)
+        {
+            var UserToDelete = await accountService.FindUserAsync(userDTO.UserId);
+            if(UserToDelete != null)
+            {
+                await accountService.DeleteUserAsync(UserToDelete);
+                return Ok();
+            }
 
+            return BadRequest("A felhasználó nem található.");
+        }
     }
 }

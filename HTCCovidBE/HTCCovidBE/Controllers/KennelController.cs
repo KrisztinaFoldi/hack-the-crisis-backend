@@ -35,7 +35,7 @@ namespace HTCCovidBE.Controllers
             return BadRequest();
         }
 
-        // GET api/kennel/5
+        // GET api/kennel/1
         [HttpGet("{KennelId}")]
         public async Task<ActionResult> EditKennel([FromRoute] long KennelId)
         {
@@ -48,13 +48,27 @@ namespace HTCCovidBE.Controllers
             return Ok(Kennel);
         }
 
-        // POST api/kennel/5
+        // POST api/kennel/1
         [HttpPost("{KennelId}")]
         public async Task<ActionResult> EditKennel([FromRoute] long KennelId, [FromBody] KennelDTO KennelDTO)
         {
             if (ModelState.IsValid)
             {
                 await kennelService.EditKennelAsync(KennelDTO, KennelId);
+                return Ok();
+            }
+
+            return BadRequest();
+        }
+
+        // DELETE api/kennel/1
+        [HttpDelete("{KennelId}")]
+        public async Task<ActionResult> DeleteKennel([FromRoute] long KennelId)
+        {
+            var KennelToDelete = await kennelService.FindKennelByIdAsync(KennelId);
+            if(KennelToDelete != null)
+            {
+                await kennelService.DeleteKennelAsync(KennelToDelete);
                 return Ok();
             }
 
