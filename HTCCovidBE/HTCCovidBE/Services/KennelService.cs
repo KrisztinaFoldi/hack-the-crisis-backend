@@ -24,6 +24,12 @@ namespace HTCCovidBE.Services
             await applicationContext.SaveChangesAsync();
         }
 
+        public async Task DeleteKennelAsync(Kennel KennelToDelete)
+        {
+            applicationContext.Kennels.Remove(KennelToDelete);
+            await applicationContext.SaveChangesAsync(); 
+        }
+
         public async Task EditKennelAsync(KennelDTO KennelDTO, long KennelId)
         {
             var KennelToEdit = await FindKennelByIdAsync(KennelId);
