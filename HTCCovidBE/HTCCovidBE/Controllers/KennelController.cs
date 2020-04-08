@@ -61,6 +61,7 @@ namespace HTCCovidBE.Controllers
             return BadRequest();
         }
 
+        // DELETE api/kennel/1
         [HttpDelete("{KennelId}")]
         public async Task<ActionResult> DeleteKennel([FromRoute] long KennelId)
         {
