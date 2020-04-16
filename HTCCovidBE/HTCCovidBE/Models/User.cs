@@ -8,5 +8,6 @@ namespace HTCCovidBE.Models
     {
        public List<Dog> Dogs { get; set; }
        public List<Reservation> Reservations { get; set; }
+       public ICollection<Favourite> Favourites { get; set; }
     }
 }

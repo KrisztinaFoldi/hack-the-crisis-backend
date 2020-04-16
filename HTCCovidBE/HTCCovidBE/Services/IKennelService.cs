@@ -11,5 +11,6 @@ namespace HTCCovidBE.Services
         Task<Kennel> FindKennelByIdAsync(long KennelId);
         Task EditKennelAsync(KennelDTO KennelDTO, long KennelId);
         Task DeleteKennelAsync(Kennel KennelToDelete);
+        Task AddToFavourite(string UserId, long KennelId);
     }
 }

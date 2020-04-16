@@ -74,5 +74,17 @@ namespace HTCCovidBE.Controllers
 
             return BadRequest();
         }
-    }
+
+        [HttpPost("fav/{KennelId}")]
+        public async Task<ActionResult> AddToFavourite([FromRoute] long KennelId, [FromBody] DeleteUserDTO userDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                await kennelService.AddToFavourite(userDTO.UserId, KennelId);
+                return Ok();
+            }
+
+            return BadRequest();
+        }
+}
 }

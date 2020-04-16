@@ -30,7 +30,7 @@ namespace HTCCovidBE.Services
         {
             var newDog = mapper.Map<DogDTO, Dog>(addDogDTO);
             newDog.UserId = userId;
-            await applicationContext.AddAsync(newDog);
+            await applicationContext.Dogs.AddAsync(newDog);
             await applicationContext.SaveChangesAsync();
         }
 

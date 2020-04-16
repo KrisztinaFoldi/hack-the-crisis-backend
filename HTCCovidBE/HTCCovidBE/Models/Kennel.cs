@@ -16,5 +16,6 @@ namespace HTCCovidBE.Models
         public DateTime Close { get; set; }
         public List<Information> Informations { get; set; }
         public List<Reservation> Reservations { get; set; }
+        public ICollection<Favourite> Favourites { get; set; }
     }
 }

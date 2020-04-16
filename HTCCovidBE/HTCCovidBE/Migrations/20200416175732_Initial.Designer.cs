@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HTCCovidBE.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20200406155721_dogpark")]
-    partial class dogpark
+    [Migration("20200416175732_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,6 +45,19 @@ namespace HTCCovidBE.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Dogs");
+                });
+
+            modelBuilder.Entity("HTCCovidBE.Models.Favourite", b =>
+                {
+                    b.Property<string>("UserId");
+
+                    b.Property<long>("KennelId");
+
+                    b.HasKey("UserId", "KennelId");
+
+                    b.HasIndex("KennelId");
+
+                    b.ToTable("Favourites");
                 });
 
             modelBuilder.Entity("HTCCovidBE.Models.Information", b =>
@@ -188,8 +201,8 @@ namespace HTCCovidBE.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8889c07c-97cf-4f9c-ad9e-3d8344d49876",
-                            ConcurrencyStamp = "be231a93-35f8-4397-9350-03e91797be2c",
+                            Id = "bfd91c6e-7979-47c1-95d2-6219b32fbc3b",
+                            ConcurrencyStamp = "04d4ebc2-f23b-4ede-8460-8766002ca00b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -284,6 +297,19 @@ namespace HTCCovidBE.Migrations
                     b.HasOne("HTCCovidBE.Models.User")
                         .WithMany("Dogs")
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("HTCCovidBE.Models.Favourite", b =>
+                {
+                    b.HasOne("HTCCovidBE.Models.Kennel", "Kennel")
+                        .WithMany("Favourites")
+                        .HasForeignKey("KennelId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("HTCCovidBE.Models.User", "User")
+                        .WithMany("Favourites")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HTCCovidBE.Models.Information", b =>

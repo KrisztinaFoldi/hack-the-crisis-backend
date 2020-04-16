@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HTCCovidBE.Migrations
 {
-    public partial class dogpark : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -200,6 +200,30 @@ namespace HTCCovidBE.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Favourites",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(nullable: false),
+                    KennelId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Favourites", x => new { x.UserId, x.KennelId });
+                    table.ForeignKey(
+                        name: "FK_Favourites_Kennels_KennelId",
+                        column: x => x.KennelId,
+                        principalTable: "Kennels",
+                        principalColumn: "KennelId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Favourites_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Informations",
                 columns: table => new
                 {
@@ -251,7 +275,7 @@ namespace HTCCovidBE.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "8889c07c-97cf-4f9c-ad9e-3d8344d49876", "be231a93-35f8-4397-9350-03e91797be2c", "Admin", "ADMIN" });
+                values: new object[] { "bfd91c6e-7979-47c1-95d2-6219b32fbc3b", "04d4ebc2-f23b-4ede-8460-8766002ca00b", "Admin", "ADMIN" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -296,6 +320,11 @@ namespace HTCCovidBE.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Favourites_KennelId",
+                table: "Favourites",
+                column: "KennelId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Informations_KennelId",
                 table: "Informations",
                 column: "KennelId");
@@ -330,6 +359,9 @@ namespace HTCCovidBE.Migrations
 
             migrationBuilder.DropTable(
                 name: "Dogs");
+
+            migrationBuilder.DropTable(
+                name: "Favourites");
 
             migrationBuilder.DropTable(
                 name: "Informations");
